@@ -2,6 +2,7 @@ import smtplib
 import imghdr
 import ssl
 from email.message import EmailMessage
+from blinkcamera import BlinkCamera
 
 # create an environment file called email_env - password, sender and recipient are all string variables
 # password and sender are the gmail account from which the image will be sent
@@ -17,10 +18,12 @@ class Blink:
 		self.password = password
 		self.sender = sender
 		self.recipient = recipient
+		self.camera = BlinkCamera()
 
-	def get_password(self):
-		self.password = input("Enter password: ")
-		self.recipient = input("Enter receipient: ")
+
+	def take_photo(self):
+		self.camera.take_photo()
+		print("photo taken")
 
 	def send_frame(self):
 		file = "claude.jpg"
@@ -44,8 +47,9 @@ class Blink:
 
 
 def start_blink():
-        blink = Blink()
-        blink.send_frame()
+	blink = Blink()
+	blink.take_photo()
+	blink.send_frame()
 
 start_blink()
 

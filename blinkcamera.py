@@ -1,10 +1,7 @@
 from time import sleep
 from picamera import PiCamera
 
-class Camera:
-	
-	def __init__(self):
-		camera = PiCamera()
+class BlinkCamera:
 
 	def take_photo(self):
 		camera = PiCamera()
@@ -12,8 +9,6 @@ class Camera:
 		# Camera warm-up time
 		sleep(2)
 		camera.capture('claude.jpg')
+		camera.close()
 
-
-camera = Camera()
-camera.take_photo()
 
