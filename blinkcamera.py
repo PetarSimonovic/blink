@@ -8,7 +8,7 @@ class BlinkCamera:
 		camera.start_preview()
 		# Camera warm-up time
 		sleep(2)
-		camera.capture('claude.jpg')
+		camera.capture('blink.jpg')
 		camera.close()
 
 
