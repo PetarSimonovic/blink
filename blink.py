@@ -1,5 +1,7 @@
 from blinkmailer import BlinkMailer
 from blinkcamera import BlinkCamera
+from daysplicer import DaySplicer
+
 
 # create an environment file called email_env - password, sender and recipient are all string variables
 # password and sender are the gmail account from which the image will be sent
@@ -14,6 +16,11 @@ class Blink:
 	def __init__(self):
 		self.camera = BlinkCamera()
 		self.mailer = BlinkMailer()
+		self.daysplicer = DaySplicer()
+
+	def create_schedule(self):
+		self.daysplicer.set_interval()
+		
 
 	def take_photo(self):
 		self.camera.take_photo()
@@ -24,8 +31,9 @@ class Blink:
 		
 
 	def start(self):
-		self.take_photo()
-		self.send_frame()
+		self.create_schedule()
+		# self.take_photo()
+		# self.send_frame()
 
 
 def start_blink():
